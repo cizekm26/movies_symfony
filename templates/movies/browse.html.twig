@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="container">
+		<div class="mb-3">
+			<h1>Filmy žánru:
+				{{ genre ? genre : 'Všechny' }}</h1>
+			Filtrovat podle žánru:
+			<ul class="list-group list-group-horizontal-sm">
+                <li class="list-group-item">
+					<a class="btn btn-primary btn-sm" href="{{ path('app_browse', { slug: null })}}">Všechny</a>
+				</li>
+				<li class="list-group-item">
+					<a class="btn btn-primary btn-sm" href="{{ path('app_browse', { slug: 'akční' })}}">Akční</a>
+				</li>
+				<li class="list-group-item">
+					<a class="btn btn-primary btn-sm" href="{{ path('app_browse', { slug: 'drama' })}}">Drama</a>
+				</li>
+				<li class="list-group-item">
+					<a class="btn btn-primary btn-sm" href="{{ path('app_browse', { slug: 'komedie' })}}">Komedie</a>
+				</li>
+			</ul>
+		</div>
+		<div>
+			<h2>Moje seznamy</h2>
+			<div class="row">
+				{% for list in pager %}
+					<div class="col-sm-6 card">
+						<div class="card-body">
+							<a href="{{ path('app_list_show', { slug: list.slug }) }}" class="text-decoration-none col col-md-4">
+								<p class="card-title">{{ list.title }}</p>
+								<p class="card-text">
+									<span>Počet:
+										{{ list.movieCount }}</span>
+									|
+									<span>{{ list.genre }}</span>
+									|
+									<span>{{ list.createdAt|ago(locale='cs') }}</span>
+								</p>
+							</a>
+						</div>
+					</div>
+				{% endfor %}
+				{{ pagerfanta(pager)}}
+			</div>
+		</div>
+	</div>
+{% endblock %}

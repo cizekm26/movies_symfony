@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Databáze filmů {% endblock %}
+
+{% block body %}
+<div class="container">
+<h1 class="d-inline">Nové filmy</h1>
+    <ul class="list-group mt-2">
+        {% for movie in movies %}
+            <li class="list-group-item">
+                <a href="#" {{ stimulus_action('movie-poster', 'show') }}>
+                    {{ movie.title }} - {{ movie.genre }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <button type="button" class="btn btn-success"><i class="fas fa-plus"></i> Přidat film</button>
+{% endblock %}

@@ -1,3 +1,5 @@
+parameters:
+    cache_adapter: 'cache.adapter.filesystem'
 framework:
     cache:
         # Unique name of your app: used to compute stable namespaces for cache keys.
@@ -8,7 +10,7 @@ framework:
         # Other options include:
 
         # Redis
-        #app: cache.adapter.redis
+        app: '%cache_adapter%'
         #default_redis_provider: redis://localhost
 
         # APCu (not recommended with heavy random-write workloads as memory fragmentation can cause perf issues)

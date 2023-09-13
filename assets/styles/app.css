@@ -1,0 +1,10 @@
+@import '~bootstrap';
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+body {
+    background-color: lightgray;
+}
+
+a:hover, a:active, a:visited, a:link{
+  text-decoration: none;
+}

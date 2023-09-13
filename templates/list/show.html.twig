@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Seznam: {{ myList.title }}{% endblock %}
+
+{% block body %}
+    <div class="container bg-light">
+        <h1 class="mb-2">{{ myList.title }}</h1>
+        <div class="row">
+            <div class="col-12 col-md-8 ps-5">
+            </div>
+            <div class="col-12 col-md-8 ps-5">
+                <h2 class="mb-4">Počet filmů: {{ myList.movieCount }} <small>(žánr: {{ myList.genre }})</small></h2>
+                <p>{{ myList.description }}</p>
+                Hodnocení: {{ myList.rating }}/10
+                <form action="{{ path('app_list_rate', {slug: myList.slug })}}" method="POST">
+                    <input min=1 max=10 type="number" name="rating"/>
+                    <button type="submit" class="btn btn-outline-primary">Odeslat</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
